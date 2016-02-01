@@ -1,6 +1,6 @@
 {
   "name": "popsicle-proxy-agent",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "Enable proxy support for Popsicle (for node)",
   "main": "dist/index.js",
   "files": [
