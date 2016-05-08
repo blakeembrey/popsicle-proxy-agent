@@ -19,8 +19,10 @@ interface NoProxyValue {
 function proxy (options: proxy.Options = {}) {
   const getProxyAgent = createGetProxyAgent(options)
 
-  return function (request: Request) {
+  return function (request: Request, next: () => any) {
     request.options.agent = getProxyAgent(request.Url)
+
+    return next()
   }
 }
 
