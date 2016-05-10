@@ -47,11 +47,11 @@ function createGetProxyAgent (options: proxy.Options) {
       return
     }
 
-    if (url.protocol === 'https:' && httpsProxy != null) {
+    if (url.protocol === 'https:' && httpsProxyUrl) {
       return new HttpsProxyAgent(httpsProxyUrl)
     }
 
-    return httpProxy ? new HttpProxyAgent(httpProxyUrl) : undefined
+    return httpProxyUrl ? new HttpProxyAgent(httpProxyUrl) : undefined
   }
 }
 
