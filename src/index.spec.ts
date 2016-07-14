@@ -1,8 +1,8 @@
-import { request } from 'popsicle'
+import { request, createTransport } from 'popsicle'
 import { parse } from 'url'
 import test = require('blue-tape')
 import serverAddress = require('server-address')
-import proxy = require('./index')
+import createProxy = require('./index')
 
 test('popsicle proxy', t => {
   let server: serverAddress.ServerAddress
@@ -24,8 +24,16 @@ test('popsicle proxy', t => {
   })
 
   t.test('use proxy option', t => {
-    return request(server.url())
-      .use(proxy({ proxy: proxyServer.url() }))
+    const proxy = createProxy({
+      proxy: proxyServer.url()
+    })
+
+    return request({
+      url: server.url(),
+      transport: createTransport({
+        agent: proxy(server.url())
+      })
+    })
       .then(function (res) {
         t.equal(res.status, 200)
         t.equal(res.body, 'proxy ' + server.url())
@@ -33,8 +41,17 @@ test('popsicle proxy', t => {
   })
 
   t.test('support no proxy', t => {
-    return request(server.url())
-      .use(proxy({ proxy: proxyServer.url(), noProxy: parse(server.url()).hostname }))
+    const proxy = createProxy({
+      proxy: proxyServer.url(),
+      noProxy: parse(server.url()).hostname
+    })
+
+    return request({
+      url: server.url(),
+      transport: createTransport({
+        agent: proxy(server.url())
+      })
+    })
       .then(function (res) {
         t.equal(res.status, 200)
         t.equal(res.body, 'server /')

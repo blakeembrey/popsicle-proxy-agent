@@ -5,7 +5,7 @@
 [![Build status][travis-image]][travis-url]
 [![Test coverage][coveralls-image]][coveralls-url]
 
-> Enable proxy support for Popsicle (for node).
+> Generic proxy agent (for Popsicle and node.js).
 
 ## Installation
 
@@ -16,12 +16,19 @@ npm install popsicle-proxy-agent --save
 ## Usage
 
 ```js
-var request = require('popsicle').request
-var proxy = require('popsicle-proxy-agent')
+var popsicle = require('popsicle')
+var createProxy = require('popsicle-proxy-agent')
 
-request('http://example.com')
-  .use(proxy({ proxy: '...' }))
-  .then(...)
+var proxy = createProxy({
+  proxy: '...'
+})
+
+popsicle.get({
+  url: 'http://example.com',
+  transport: popsicle.createTransport({
+    agent: proxy('http://example.com')
+  })
+})
 ```
 
 ### Options

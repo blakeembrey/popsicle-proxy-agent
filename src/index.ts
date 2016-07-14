@@ -1,7 +1,6 @@
 // Credits: https://github.com/request/request/blob/master/lib/getProxyFromURI.js
 
 import { parse, Url } from 'url'
-import { Request } from 'popsicle'
 import HttpProxyAgent = require('http-proxy-agent')
 import HttpsProxyAgent = require('https-proxy-agent')
 
@@ -14,26 +13,13 @@ interface NoProxyValue {
 }
 
 /**
- * Support proxies with Popsicle.
+ * Return a function that will create proxy agents based on URL.
  */
-function proxy (options: proxy.Options = {}) {
-  const getProxyAgent = createGetProxyAgent(options)
-
-  return function (request: Request, next: () => any) {
-    request.options.agent = getProxyAgent(request.Url)
-
-    return next()
-  }
-}
-
-/**
- * Return a function that will create proxy agents based on the input URL.
- */
-function createGetProxyAgent (options: proxy.Options) {
+function proxy (options: proxy.Options) {
   const noProxy = options.noProxy || process.env.NO_PROXY || process.env.no_proxy
 
   if (noProxy === '*') {
-    return (url: Url): void => undefined
+    return (urlStr: string): void => undefined
   }
 
   const noProxyList = parseNoProxy(noProxy)
@@ -42,16 +28,23 @@ function createGetProxyAgent (options: proxy.Options) {
   const httpProxyUrl = httpProxy ? parse(httpProxy) : undefined
   const httpsProxyUrl = httpsProxy ? parse(httpsProxy) : undefined
 
-  return (url: Url) => {
-    if (noProxy && urlInNoProxy(url, noProxyList)) {
-      return
-    }
+  return (urlStr: string) => {
+    const url = parse(urlStr)
+    const ignore = noProxy && urlInNoProxy(url, noProxyList)
 
-    if (url.protocol === 'https:' && httpsProxyUrl) {
+    if (url.protocol === 'https:') {
+      if (ignore || !httpsProxyUrl) {
+        return
+      }
+
       return new HttpsProxyAgent(httpsProxyUrl)
     }
 
-    return httpProxyUrl ? new HttpProxyAgent(httpProxyUrl) : undefined
+    if (ignore || !httpProxyUrl) {
+      return
+    }
+
+    return new HttpProxyAgent(httpProxyUrl)
   }
 }
 
