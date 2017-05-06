@@ -1,9 +1,10 @@
 # Popsicle Proxy Agent
 
-[![NPM version][npm-image]][npm-url]
-[![NPM downloads][downloads-image]][downloads-url]
-[![Build status][travis-image]][travis-url]
-[![Test coverage][coveralls-image]][coveralls-url]
+[![NPM version](https://img.shields.io/npm/v/popsicle-proxy-agent.svg?style=flat)](https://npmjs.org/package/popsicle-proxy-agent)
+[![NPM downloads](https://img.shields.io/npm/dm/popsicle-proxy-agent.svg?style=flat)](https://npmjs.org/package/popsicle-proxy-agent)
+[![Build status](https://img.shields.io/travis/blakeembrey/popsicle-proxy-agent.svg?style=flat)](https://travis-ci.org/blakeembrey/popsicle-proxy-agent)
+[![Test coverage](https://img.shields.io/coveralls/blakeembrey/popsicle-proxy-agent.svg?style=flat)](https://coveralls.io/r/blakeembrey/popsicle-proxy-agent?branch=master)
+[![Greenkeeper badge](https://badges.greenkeeper.io/blakeembrey/popsicle-proxy-agent.svg)](https://greenkeeper.io/)
 
 > Generic proxy agent (for Popsicle and node.js).
 
@@ -41,12 +42,3 @@ popsicle.get({
 ## License
 
 Apache 2.0
-
-[npm-image]: https://img.shields.io/npm/v/popsicle-proxy-agent.svg?style=flat
-[npm-url]: https://npmjs.org/package/popsicle-proxy-agent
-[downloads-image]: https://img.shields.io/npm/dm/popsicle-proxy-agent.svg?style=flat
-[downloads-url]: https://npmjs.org/package/popsicle-proxy-agent
-[travis-image]: https://img.shields.io/travis/blakeembrey/popsicle-proxy-agent.svg?style=flat
-[travis-url]: https://travis-ci.org/blakeembrey/popsicle-proxy-agent
-[coveralls-image]: https://img.shields.io/coveralls/blakeembrey/popsicle-proxy-agent.svg?style=flat
-[coveralls-url]: https://coveralls.io/r/blakeembrey/popsicle-proxy-agent?branch=master
