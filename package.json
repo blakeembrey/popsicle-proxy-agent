@@ -45,7 +45,7 @@
     "popsicle": "^9.1.0",
     "server-address": "^1.0.4",
     "tap-spec": "^4.1.1",
-    "ts-node": "^3.0.4",
+    "ts-node": "^3.0.6",
     "tslint": "^5.2.0",
     "typescript": "^2.3.2",
     "typings": "^2.1.1"
