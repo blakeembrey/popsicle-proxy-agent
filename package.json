@@ -46,7 +46,7 @@
     "server-address": "^1.0.4",
     "tap-spec": "^4.1.1",
     "ts-node": "^3.0.4",
-    "tslint": "^5.2.0",
+    "tslint": "5.4.2",
     "typescript": "^2.3.2",
     "typings": "^2.1.1"
   },
