@@ -51,7 +51,7 @@
     "typings": "^2.1.1"
   },
   "dependencies": {
-    "http-proxy-agent": "^1.0.0",
+    "http-proxy-agent": "^2.0.0",
     "https-proxy-agent": "^2.0.0"
   }
 }
