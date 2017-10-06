@@ -43,7 +43,7 @@
     "istanbul": "1.0.0-alpha.2",
     "nock": "^9.0.13",
     "popsicle": "^9.1.0",
-    "server-address": "^1.0.4",
+    "server-address": "^2.0.0",
     "tap-spec": "^4.1.1",
     "ts-node": "^3.0.4",
     "tslint": "^5.2.0",
