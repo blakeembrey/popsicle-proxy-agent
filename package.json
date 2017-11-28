@@ -52,6 +52,6 @@
   },
   "dependencies": {
     "http-proxy-agent": "^2.0.0",
-    "https-proxy-agent": "^2.0.0"
+    "https-proxy-agent": "^2.1.1"
   }
 }
